@@ -4,19 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".RegisterActivity"
     android:background="@drawable/tableclearbackground">
-
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/iView"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/tableclearlogo"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/table"
@@ -26,9 +15,8 @@
         android:textStyle="bold"
         android:textSize="50dp"
         android:textColor="#db4a26"
-        android:layout_below="@id/iView"
         android:layout_marginLeft="55dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="55dp"/>
 
     <TextView
         android:id="@+id/clear"
@@ -39,7 +27,7 @@
         android:textSize="43dp"
         android:textColor="#F1F1F1"
         android:layout_toRightOf="@id/table"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="75dp"
         android:layout_marginLeft="10dp"/>
 
     <EditText
@@ -50,7 +38,7 @@
         android:inputType="textEmailAddress"
         android:layout_below="@id/clear"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="70dp"
         android:hint="Username"
         android:background="@drawable/radius"
         android:textSize="20dp"
@@ -65,56 +53,49 @@
         android:inputType="textPassword"
         android:layout_below="@id/inUsername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:hint="Password"
         android:textStyle="bold"
         android:background="@drawable/radius"
         android:textSize="20dp"
         android:padding="10dp"/>
 
-    <Button
-        android:id="@+id/btLogin"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:textStyle="bold"
-        android:textSize="25dp"
+    <EditText
+        android:id="@+id/inRetype"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="textPassword"
         android:layout_below="@id/inPassword"
         android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/radius2"/>
-
-    <TextView
-        android:id="@+id/btRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btLogin"
-        android:layout_centerHorizontal="true"
-        android:text="Don't have account yet? Join in now!"
-        android:textColor="#F1F1F1"
+        android:layout_marginTop="25dp"
+        android:hint="Re-type Your Password"
         android:textStyle="bold"
-        android:textSize="15dp"
-        android:layout_marginTop="60dp"/>
+        android:background="@drawable/radius"
+        android:textSize="20dp"
+        android:padding="10dp"/>
 
-    <ImageView
-        android:id="@+id/btAboutMe"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:srcCompat="@android:drawable/ic_dialog_info"
-        android:layout_marginLeft="370dp"
-        android:layout_marginTop="10dp"
-        android:clickable="true"/>
+    <Button
+        android:id="@+id/btRegister"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_below="@id/inRetype"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/radius2"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btLogin"
+        android:layout_below="@+id/btRegister"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:visibility="invisible" />
-
 
 </RelativeLayout>
