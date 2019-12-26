@@ -30,6 +30,16 @@
         android:layout_marginTop="75dp"
         android:layout_marginLeft="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seat more and Spend less with Table Clear"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/clear"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:textSize="15dp"/>
+
     <EditText
         android:id="@+id/inUsername"
         android:layout_width="320dp"
@@ -85,7 +95,7 @@
         android:layout_below="@id/inRetype"
         android:layout_centerHorizontal="true"
         android:padding="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="115dp"
         android:background="@drawable/radius2"/>
 
     <ProgressBar

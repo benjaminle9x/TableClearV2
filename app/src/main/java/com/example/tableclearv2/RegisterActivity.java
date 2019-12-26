@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser() != null) {
-            openProfileActivity();
+            openMainActivity();
             finish();
         }
 
@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(RegisterActivity.this,"Account Created Successfully", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
-                            openProfileActivity();
+                            openMainActivity();
                         } else {
                             Toast.makeText(RegisterActivity.this,"Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -104,8 +104,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //Open Activities
-    private void openProfileActivity() {
-        Intent i = new Intent(this,ProfileActivity.class);
+    private void openMainActivity() {
+        Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
 
