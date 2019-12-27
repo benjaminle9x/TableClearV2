@@ -44,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = inPassword.getText().toString().trim();
                 String retype = inRetype.getText().toString().trim();
 
-
                 if(TextUtils.isEmpty(username)) {
                     inUsername.setError("Username is Required");
                     inUsername.requestFocus();

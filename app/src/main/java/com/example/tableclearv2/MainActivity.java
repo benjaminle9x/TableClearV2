@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else
                                 Toast.makeText(MainActivity.this, "Email or Password Incorrect!", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
                 }

@@ -58,7 +58,6 @@ public class AddProfileActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getApplicationContext(), "Profile Created", Toast.LENGTH_LONG).show();
-                openSettingsFragment();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -73,10 +72,5 @@ public class AddProfileActivity extends AppCompatActivity {
         inPhone = findViewById(R.id.inPhone);
         inAddress = findViewById(R.id.inAddress);
         btCreate = findViewById(R.id.btCreate);
-    }
-
-    private void openSettingsFragment() {
-        Intent i = new Intent(this,SettingsFragment.class);
-        startActivity(i);
     }
 }
