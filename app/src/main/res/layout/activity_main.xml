@@ -7,7 +7,8 @@
     tools:context=".MainActivity"
     android:background="@drawable/tableclearbackground">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/iView"
         android:layout_width="match_parent"
         android:layout_height="250dp"

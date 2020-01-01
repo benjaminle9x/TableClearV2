@@ -33,23 +33,28 @@ public class SettingsFragment extends Fragment {
     ListView listview;
 
     String mTitle[] = {"Edit Account",
-            "Booking History",
-            "Add Profile Information",
-            "Edit Profile Information",
-            "Change Language",
-            "Signout"};
+                       "Booking History",
+                       "Add Profile Information",
+                       "Edit Profile Information",
+                       "Change Language",
+                       "Signout",
+                       "Go To Manager Side"};
+
     String mDescription[] = {"Editing your Password",
-            "Checking your Booking History",
-            "Adding your Profile",
-            "Editing your Profile",
-            "Changing Language of the Application",
-            "Signing out of your Account"};
+                             "Checking your Booking History",
+                             "Adding your Profile",
+                             "Editing your Profile",
+                             "Changing Language of the Application",
+                             "Signing out of your Account",
+                             "Moving to Manager Screen"};
+
     int images[] = {R.drawable.ic_account,
-            R.drawable.ic_history,
-            R.drawable.ic_add,
-            R.drawable.ic_edit,
-            R.drawable.ic_language,
-            R.drawable.ic_logout};
+                    R.drawable.ic_history,
+                    R.drawable.ic_add,
+                    R.drawable.ic_edit,
+                    R.drawable.ic_language,
+                    R.drawable.ic_logout,
+                    R.drawable.ic_manager};
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -87,6 +92,10 @@ public class SettingsFragment extends Fragment {
 
                 if(position == 5) {
                     Logout();
+                }
+
+                if(position == 6) {
+                    openManagerActivity();
                 }
             }
         });
@@ -163,6 +172,11 @@ public class SettingsFragment extends Fragment {
 
     private void openEditAccountActivity() {
         Intent i = new Intent(getActivity(),EditAccountActivity.class);
+        startActivity(i);
+    }
+
+    private void openManagerActivity() {
+        Intent i = new Intent(getActivity(),ManagerActivity.class);
         startActivity(i);
     }
 }

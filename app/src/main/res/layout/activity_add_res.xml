@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddResActivity"
+    android:background="@drawable/tableclearbackground">
+
+    <TextView
+        android:id="@+id/table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TABLE"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        android:textColor="#db4a26"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="55dp"/>
+
+    <TextView
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLEAR"
+        android:textStyle="bold"
+        android:textSize="43dp"
+        android:textColor="#F1F1F1"
+        android:layout_toRightOf="@id/table"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seat more and Spend less with Table Clear"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/clear"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:textSize="15dp"/>
+
+    <EditText
+        android:id="@+id/inResname"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:layout_below="@id/clear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:hint="Restaurant Name"
+        android:background="@drawable/radius"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/inAddress"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:layout_below="@id/inResname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="Address"
+        android:textStyle="bold"
+        android:background="@drawable/radius"
+        android:textSize="20dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/inRating"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:layout_below="@id/inAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="Rating"
+        android:textStyle="bold"
+        android:background="@drawable/radius"
+        android:textSize="20dp"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btadd"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:text="Add Restaurant"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_below="@id/inRating"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_marginTop="115dp"
+        android:background="@drawable/radius2"/>
+
+</RelativeLayout>

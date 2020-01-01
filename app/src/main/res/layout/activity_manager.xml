@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tableclearbackground" >
+    tools:context=".ManagerActivity"
+    android:background="@drawable/tableclearbackground">
+
+    <ImageView
+        android:id="@+id/btAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_addres"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="380dp"
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/table"
@@ -38,37 +51,4 @@
         android:padding="10dp"
         android:textSize="15dp"/>
 
-    <TextView
-        android:id="@+id/resname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Restaurant"
-        android:textSize="20dp"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@id/quote"/>
-
-    <TextView
-        android:id="@+id/resrating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rating"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/resname"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="140dp"
-        android:layout_below="@id/quote"/>
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="533dp"
-        android:layout_below="@id/resname"
-        android:layout_marginTop="10dp"/>
-
 </RelativeLayout>
-
