@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/tableclearbackground" >
@@ -46,7 +47,7 @@
         android:textSize="20dp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:layout_marginLeft="85dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="15dp"
         android:layout_below="@id/quote"/>
 
@@ -60,15 +61,17 @@
         android:textStyle="bold"
         android:layout_toRightOf="@+id/resname"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="130dp"
         android:layout_below="@id/quote"/>
 
-    <ListView
-        android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recView"
+        android:padding="4dp"
         android:layout_width="match_parent"
         android:layout_height="533dp"
         android:layout_below="@id/resname"
-        android:layout_marginTop="10dp"/>
-
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:scrollbars="vertical"/>
 </RelativeLayout>
 

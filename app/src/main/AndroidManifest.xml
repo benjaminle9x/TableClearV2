@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
-        <activity android:name=".AddResActivity"></activity>
+        <activity android:name=".ReservationActivity"></activity>
+        <activity android:name=".AddResActivity" />
         <activity android:name=".ManagerActivity" />
         <activity android:name=".EditAccountActivity" />
         <activity android:name=".EditProfileActivity" />
