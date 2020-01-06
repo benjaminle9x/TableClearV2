@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:padding="10dp"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <TextView
+            android:id="@+id/cusName"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Benjamin Le"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/cusPhone"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="1111211441"
+            android:textSize="15dp"
+            android:layout_below="@id/cusName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/resName"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cusName"
+            android:layout_marginTop="20dp"
+            android:text="Subway"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/resAddress"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/resName"
+            android:layout_toRightOf="@id/cusPhone"
+            android:layout_marginTop="5dp"
+            android:text="115 Habitant Drive"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/resName"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:text="10:00"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/time"
+            android:layout_marginTop="25dp"
+            android:text="2020/01/04"/>
+
+        <TextView
+            android:id="@+id/table"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time"
+            android:layout_toRightOf="@id/resAddress"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="36dp"
+            android:text="15"
+            android:textSize="15dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

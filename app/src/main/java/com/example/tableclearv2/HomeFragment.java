@@ -96,15 +96,4 @@ public class HomeFragment extends Fragment {
 
         return v;
     }
-
-
-
-    /*
-    public void onRecyclerClick(int position) {
-        Toast.makeText(getActivity(),list.get(position).getResName(),Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getActivity(), ManagerActivity.class);
-        startActivity(i);
-    }
-
-     */
 }
