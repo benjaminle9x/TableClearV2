@@ -20,15 +20,17 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ManagerActivity extends AppCompatActivity {
     ImageView btAdd;
     RecyclerView recView;
     ArrayList<DataStructureReservation> arrayList;
+
     FirebaseRecyclerOptions<DataStructureReservation> options;
     FirebaseRecyclerAdapter<DataStructureReservation,ReservationAdapter> adapter;
-    DatabaseReference myRef;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onStart() {
@@ -49,31 +51,31 @@ public class ManagerActivity extends AppCompatActivity {
         findAllViews();
 
         recView.setHasFixedSize(true);
-        recView.setLayoutManager(new LinearLayoutManager(this));
+        recView.setLayoutManager(new LinearLayoutManager((this)));
+
         arrayList = new ArrayList<DataStructureReservation>();
-        myRef = FirebaseDatabase.getInstance().getReference().child("managerdata/reservation/");
-        myRef.keepSynced(true);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("managerdata/reservation/");
+        databaseReference.keepSynced(true);
 
-        options = new FirebaseRecyclerOptions.Builder<DataStructureReservation>().setQuery(myRef,DataStructureReservation.class).build();
+        options = new FirebaseRecyclerOptions.Builder<DataStructureReservation>()
+                .setQuery(databaseReference,DataStructureReservation.class).build();
+
+
         adapter = new FirebaseRecyclerAdapter<DataStructureReservation, ReservationAdapter>(options) {
-
             @Override
             protected void onBindViewHolder(@NonNull ReservationAdapter reservationAdapter, int i, @NonNull DataStructureReservation dataStructureReservation) {
-                reservationAdapter.CusName.setText(dataStructureReservation.getmCusName());
-                reservationAdapter.CusPhone.setText(dataStructureReservation.getmCusPhone());
-                reservationAdapter.ResName.setText(dataStructureReservation.getmResName());
-                reservationAdapter.ResAddress.setText(dataStructureReservation.getmResAddress());
-                reservationAdapter.Time.setText(dataStructureReservation.getmTime());
-                reservationAdapter.Date.setText(dataStructureReservation.getmDate());
-                reservationAdapter.Table.setText(dataStructureReservation.getmTable());
+                reservationAdapter.rname.setText(dataStructureReservation.getmResName());
+                reservationAdapter.raddress.setText(dataStructureReservation.getmResAddress());
+                reservationAdapter.cname.setText(dataStructureReservation.getmCusName());
+                reservationAdapter.cphone.setText(dataStructureReservation.getmCusPhone());
+                reservationAdapter.mtime.setText(dataStructureReservation.getmTime());
+                reservationAdapter.mdate.setText(dataStructureReservation.getmDate());
+                reservationAdapter.mtable.setText(dataStructureReservation.getmTable());
+
                 reservationAdapter.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        /*
-                        Intent i = new Intent(this,MainActivity.class);
-                        i.putExtra("cusname",dataStructureReservation.getmCusName());
-                         */
-                        Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_LONG).show();
+
                     }
                 });
             }
@@ -81,10 +83,10 @@ public class ManagerActivity extends AppCompatActivity {
             @NonNull
             @Override
             public ReservationAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new ReservationAdapter(LayoutInflater.from(ManagerActivity.this).inflate(R.layout.reservation_list,parent,false));
+                return new ReservationAdapter(LayoutInflater.from(ManagerActivity.this)
+                        .inflate(R.layout.reservation_list,parent,false));
             }
         };
-
 
         recView.setAdapter(adapter);
 
