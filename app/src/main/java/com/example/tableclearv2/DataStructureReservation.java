@@ -9,6 +9,9 @@ public class DataStructureReservation {
     private String mDate;
     private String mTable;
 
+    public DataStructureReservation() {
+    }
+
     public DataStructureReservation(String mResName, String mResAddress, String mCusName, String mCusPhone, String mTime, String mDate, String mTable) {
         this.mResName = mResName;
         this.mResAddress = mResAddress;
@@ -17,6 +20,8 @@ public class DataStructureReservation {
         this.mTime = mTime;
         this.mDate = mDate;
         this.mTable = mTable;
+
+
     }
 
     public String getmResName() {

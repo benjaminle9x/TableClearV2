@@ -19,6 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class ManagerActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,8 @@ public class ManagerActivity extends AppCompatActivity {
         recView.setLayoutManager(new LinearLayoutManager((this)));
 
         arrayList = new ArrayList<DataStructureReservation>();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("managerdata/reservation/");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("managerdata/reservation");
+
         databaseReference.keepSynced(true);
 
         options = new FirebaseRecyclerOptions.Builder<DataStructureReservation>()
@@ -107,4 +110,5 @@ public class ManagerActivity extends AppCompatActivity {
         Intent i = new Intent(this,AddResActivity.class);
         startActivity(i);
     }
+
 }
