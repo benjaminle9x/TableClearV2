@@ -1,6 +1,7 @@
 package com.example.tableclearv2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -20,20 +21,28 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class ReservationActivity extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
     EditText ResName, ResAddress, CusName, CusPhone, tvTime, tvDate, tvTable;
     Button btTime, btDate, btBook;
     NumberPicker numberPicker;
-    FirebaseDatabase database, database2;
+    FirebaseDatabase database, database2, database3;
     DatabaseReference myRef, myRef2;
+    DatabaseReference ref;
     DataStructureReservation reservation;
     DataStructureBooking booking;
-
+    DataStructureGPS mGPS;
+    TextView lat, lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,7 @@ public class ReservationActivity extends AppCompatActivity implements NumberPick
         findAllViews();
         getDatabase();
         getDatabase2();
+        getDatabase3();
 
         final String mResName = getIntent().getStringExtra("resname");
         String mResAddress = getIntent().getStringExtra("resaddress");
@@ -73,8 +83,17 @@ public class ReservationActivity extends AppCompatActivity implements NumberPick
         btBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeData(ResName.getText(),ResAddress.getText(),CusName.getText(),CusPhone.getText(),tvTime.getText(),tvDate.getText(),tvTable.getText());
-                writeData2(ResName.getText(),ResAddress.getText(),tvTime.getText(),tvDate.getText(),tvTable.getText());
+                float mlat = Float.parseFloat(lat.getText().toString());
+                float mlon = Float.parseFloat(lon.getText().toString());
+                if(mlat > 44.01 || mlat < 43.01 || mlon > 80.01 || mlon < 79.01) {
+                    writeData(ResName.getText(),ResAddress.getText(),CusName.getText(),CusPhone.getText(),tvTime.getText(),tvDate.getText(),tvTable.getText());
+                    writeData2(ResName.getText(),ResAddress.getText(),tvTime.getText(),tvDate.getText(),tvTable.getText());
+                }
+
+                else if(mlat > 43.01 && mlat < 44.01 && mlon > 79.01 && mlon < 80.01) {
+                    Toast.makeText(getApplicationContext(), "Table is already occupied. Please choose another table!", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -92,6 +111,24 @@ public class ReservationActivity extends AppCompatActivity implements NumberPick
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String path = "userdata/" + mAuth.getUid() + "/bookingdata/";
         myRef2 = database2.getReference(path);
+    }
+
+    private void getDatabase3(){
+        ref = FirebaseDatabase.getInstance().getReference().child("gpssensor");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String lat1 = dataSnapshot.child("lat").getValue().toString();
+                String lon1 = dataSnapshot.child("lon").getValue().toString();
+                lat.setText(lat1);
+                lon.setText(lon1);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private DataStructureReservation createData(Editable mResName,
@@ -234,10 +271,72 @@ public class ReservationActivity extends AppCompatActivity implements NumberPick
         tvDate = findViewById(R.id.mDate);
         tvTable = findViewById(R.id.mTable);
         numberPicker = findViewById(R.id.numberPicker);
+        lat = findViewById(R.id.lat);
+        lon = findViewById(R.id.lon);
     }
 
     @Override
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
         tvTable.setText(String.valueOf(newVal));
     }
+
+    /*
+    private void retrieveData(){
+        myRef3.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                DataStructureGPS ds = dataSnapshot.getValue(DataStructureGPS.class);
+                lat.setText(ds.getmLat());
+                lon.setText(ds.getmLon());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                DataStructureGPS ds = dataSnapshot.getValue(DataStructureGPS.class);
+                lat.setText(ds.getmLat());
+                lon.setText(ds.getmLon());
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        myRef3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<DataStructureGPS> arraylist = new ArrayList<DataStructureGPS>();
+
+                if(dataSnapshot != null && dataSnapshot.getValue() != null){
+                    for(DataSnapshot a : dataSnapshot.getChildren()) {
+                        DataStructureGPS dataStructureGPS = new DataStructureGPS();
+                        dataStructureGPS.setmLat(a.getValue(DataStructureGPS.class).getmLat());
+                        dataStructureGPS.setmLon(a.getValue(DataStructureGPS.class).getmLon());
+
+                        arraylist.add(dataStructureGPS);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Data unavailable", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "Loading data failed", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+     */
 }
